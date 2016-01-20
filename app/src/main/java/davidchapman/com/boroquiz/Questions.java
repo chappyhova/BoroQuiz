@@ -9,7 +9,7 @@ public class Questions {
     private Page[] mPages;
 
     public Questions(){
-        mPages = new Page[18];
+        mPages = new Page[33];
 
         mPages[0] = new Page("Which player scored the first goal in a competitive game at the Riverside Stadium?",
                 new Answer ("Craig Hignett", true),
@@ -113,11 +113,102 @@ public class Questions {
                 new Answer ("Craig Hignett", false),
                 new Answer ("Mikkel Beck", true));
 
-        mPages[17] = new Page("Who was Boro's top Premier League goalscorer with 13 goals in the 2005/06 season?",
-                new Answer ("Jimmy Floyd Hasselbaink", false),
-                new Answer ("Yakubu", true),
+        mPages[17] = new Page("In which year did Boro win the Carling Cup?",
+                new Answer ("2002", false),
+                new Answer ("2003", false),
+                new Answer ("2004", true),
+                new Answer ("2005", false));
+
+        mPages[18] = new Page("Which team beat Boro 4-0 in the UEFA Cup Final in 2006?",
+                new Answer ("Espanyol", false),
+                new Answer ("Deportivo", false),
+                new Answer ("Villarreal", false),
+                new Answer ("Sevilla", true));
+
+        mPages[19] = new Page("Who is the oldest player to play for Boro?",
+                new Answer ("Bryan Robson", true),
+                new Answer ("Mark Schwarzer", false),
+                new Answer ("Gareth Southgate", false),
+                new Answer ("Colin Cooper", false));
+
+        mPages[20] = new Page("Who scored the most league goals in Boro's history?",
+                new Answer ("John Hickton", false),
+                new Answer ("Brian Clough", false),
+                new Answer ("George Camsell", true),
+                new Answer ("Bernie Slaven", false));
+
+        mPages[21] = new Page("Which former Boro player has the most interntional caps while playing for the club?",
+                new Answer ("Gareth Southgate", false),
+                new Answer ("Mark Schwarzer", true),
+                new Answer ("Juninho", false),
+                new Answer ("Stewart Downing", false));
+
+        mPages[22] = new Page("Who is Boro's most expensive signing?",
+                new Answer ("Massimo Maccarone", false),
+                new Answer ("Yakubu", false),
+                new Answer ("Ugo Ehiogu", false),
+                new Answer ("Afonso Alves", true));
+
+        mPages[23] = new Page("From which Dutch club did Boro sign, Afonso Alves?",
+                new Answer ("Heerenveen", true),
+                new Answer ("Ajax", false),
+                new Answer ("PSV", false),
+                new Answer ("Feyenoord", false));
+
+        mPages[24] = new Page("From which club did Boro sign, Craig Hignett?",
+                new Answer ("Barnsley", false),
+                new Answer ("Liverpool", false),
+                new Answer ("Crewe Alexandra", true),
+                new Answer ("Blackburn Rovers", false));
+
+        mPages[25] = new Page("How many years did Boro go without winning a major trophy?",
+                new Answer ("108", false),
+                new Answer ("128", true),
+                new Answer ("118", false),
+                new Answer ("138", false));
+
+        mPages[26] = new Page("Which country did Joseph-Desire Job play for?",
+                new Answer ("Ivory Coast", false),
+                new Answer ("South Africa", false),
+                new Answer ("Ghana", false),
+                new Answer ("Cameroon", true));
+
+        mPages[27] = new Page("From which team did Boro sign Juninho in 1995?",
+                new Answer ("Sao Paolo", true),
+                new Answer ("Santos", false),
+                new Answer ("Flamengo", false),
+                new Answer ("Palmeiras", false));
+
+        mPages[28] = new Page("To which team did Boro sell Juninho in 1997?",
+                new Answer ("Barcelona", false),
+                new Answer ("Celtic", false),
+                new Answer ("Atletico Madrid", true),
+                new Answer ("Real Madrid", false));
+
+        mPages[29] = new Page("At which stadium did Boro play West Ham United in an FA Cup semi-final in 2006?",
+                new Answer ("Old Trafford", false),
+                new Answer ("Villa Park", true),
+                new Answer ("Millenium Stadium", false),
+                new Answer ("Wembley", false));
+
+        mPages[30] = new Page("Which side knocked Boro out of the UEFA Cup in 2005?",
+                new Answer ("Villarreal", false),
+                new Answer ("Roma", false),
+                new Answer ("Sevilla", false),
+                new Answer ("Sporting Lisbon", true));
+
+        mPages[31] = new Page("Which Boro player scored a brace in a 2-0 victory over Lazio in 2004?",
+                new Answer ("Bolo Zenden", true),
+                new Answer ("Stewart Downing", false),
                 new Answer ("Mark Viduka", false),
-                new Answer ("Massimo Maccarone", false));
+                new Answer ("Jimmy Floyd Hasselbaink", false));
+
+        mPages[32] = new Page("Which shirt number does Stewart Downing wear for Boro?",
+                new Answer ("11", false),
+                new Answer ("20", false),
+                new Answer ("19", true),
+                new Answer ("17", false));
+
 
 
 

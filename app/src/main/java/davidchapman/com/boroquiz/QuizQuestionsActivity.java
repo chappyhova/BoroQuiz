@@ -56,7 +56,7 @@ public class QuizQuestionsActivity extends AppCompatActivity {
         //Create random number generator, add the numbers to an array and then shuffle.
         Questions newQuestions = new Questions();
 
-        numbers = new ArrayList<Integer>();
+        numbers = new ArrayList<>();
         for (int i = 0; i <= newQuestions.getLength() - 1; ++i) {
             numbers.add(i);
         }
@@ -68,11 +68,13 @@ public class QuizQuestionsActivity extends AppCompatActivity {
         // Pull a question using the random number and set the text on the display to that question.
         mCurrentPage = mQuestions.getPage(question);
         mTextView.setText(mCurrentPage.getText());
+
         // Reset all buttons to white.
         mAnswer1.setBackgroundColor(Color.WHITE);
         mAnswer2.setBackgroundColor(Color.WHITE);
         mAnswer3.setBackgroundColor(Color.WHITE);
         mAnswer4.setBackgroundColor(Color.WHITE);
+
         //Reset all button text colours to red.
         mAnswer1.setTextColor(Color.RED);
         mAnswer2.setTextColor(Color.RED);

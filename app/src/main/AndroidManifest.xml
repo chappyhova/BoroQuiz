@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="davidchapman.com.boroquiz" >
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -28,6 +31,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="davidchapman.com.boroquiz.MainActivity" />
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="e81fdfd8a570b05041695531906bf4c93c386847" />
     </application>
 
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

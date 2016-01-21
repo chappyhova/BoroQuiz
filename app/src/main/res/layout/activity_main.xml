@@ -20,9 +20,9 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="38dp"
         android:textColor="#fc0000"
-        android:background="@drawable/roundcorner"
         android:textSize="18dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:background="#ffffff" />
 
     <davidchapman.com.boroquiz.CustomTextView
         android:layout_width="wrap_content"

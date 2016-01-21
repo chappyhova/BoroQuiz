@@ -64,12 +64,8 @@ public class QuizQuestionsActivity extends AppCompatActivity {
         return numbers;
     }
 
-    private void loadPage(int question) {
-        // Pull a question using the random number and set the text on the display to that question.
-        mCurrentPage = mQuestions.getPage(question);
-        mTextView.setText(mCurrentPage.getText());
-
-        // Reset all buttons to white.
+    private void buttonResetter()
+    {
         mAnswer1.setBackgroundColor(Color.WHITE);
         mAnswer2.setBackgroundColor(Color.WHITE);
         mAnswer3.setBackgroundColor(Color.WHITE);
@@ -80,6 +76,29 @@ public class QuizQuestionsActivity extends AppCompatActivity {
         mAnswer2.setTextColor(Color.RED);
         mAnswer3.setTextColor(Color.RED);
         mAnswer4.setTextColor(Color.RED);
+
+        //Enable all buttons
+        mAnswer1.setEnabled(true);
+        mAnswer2.setEnabled(true);
+        mAnswer3.setEnabled(true);
+        mAnswer4.setEnabled(true);
+
+    }
+
+    private void disableButtons()
+    {
+        mAnswer1.setEnabled(false);
+        mAnswer2.setEnabled(false);
+        mAnswer3.setEnabled(false);
+        mAnswer4.setEnabled(false);
+    }
+
+    private void loadPage(int question) {
+        // Pull a question using the random number and set the text on the display to that question.
+        mCurrentPage = mQuestions.getPage(question);
+        mTextView.setText(mCurrentPage.getText());
+
+        buttonResetter();
 
         // Check to see if it was the last question if not then display answers on the buttons with
         // OnClickListeners.
@@ -116,10 +135,12 @@ public class QuizQuestionsActivity extends AppCompatActivity {
                     if (mCurrentPage.getAnswer1().isCorrect()) {
                         correctAnswers = correctAnswers + 1;
                         mAnswer1.setBackgroundColor(Color.GREEN);
+                        disableButtons();
                     }
                     else {
                         mAnswer1.setBackgroundColor(Color.RED);
                         mAnswer1.setTextColor(Color.WHITE);
+                        disableButtons();
                     }
                     mHandler.postDelayed(new Runnable() {
                         @Override
@@ -139,10 +160,12 @@ public class QuizQuestionsActivity extends AppCompatActivity {
                     if (mCurrentPage.getAnswer2().isCorrect()) {
                         correctAnswers = correctAnswers + 1;
                         mAnswer2.setBackgroundColor(Color.GREEN);
+                        disableButtons();
                     }
                     else {
                         mAnswer2.setBackgroundColor(Color.RED);
                         mAnswer2.setTextColor(Color.WHITE);
+                        disableButtons();
                     }
                     mHandler.postDelayed(new Runnable() {
                         @Override
@@ -163,10 +186,12 @@ public class QuizQuestionsActivity extends AppCompatActivity {
                     if (mCurrentPage.getAnswer3().isCorrect()) {
                         correctAnswers = correctAnswers + 1;
                         mAnswer3.setBackgroundColor(Color.GREEN);
+                        disableButtons();
                     }
                     else {
                         mAnswer3.setBackgroundColor(Color.RED);
                         mAnswer3.setTextColor(Color.WHITE);
+                        disableButtons();
                     }
                     mHandler.postDelayed(new Runnable() {
                         @Override
@@ -187,10 +212,12 @@ public class QuizQuestionsActivity extends AppCompatActivity {
                     if (mCurrentPage.getAnswer4().isCorrect()) {
                         correctAnswers = correctAnswers + 1;
                         mAnswer4.setBackgroundColor(Color.GREEN);
+                        disableButtons();
                     }
                     else {
                         mAnswer4.setBackgroundColor(Color.RED);
                         mAnswer4.setTextColor(Color.WHITE);
+                        disableButtons();
                     }
                     mHandler.postDelayed(new Runnable() {
                         @Override

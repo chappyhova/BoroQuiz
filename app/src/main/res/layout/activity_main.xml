@@ -10,7 +10,7 @@
                 android:background="@drawable/mainbackground">
 
 
-    <Button
+    <davidchapman.com.boroquiz.ButtonTextFont
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Start Quiz"

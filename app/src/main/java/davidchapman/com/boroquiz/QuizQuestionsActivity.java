@@ -1,14 +1,27 @@
 package davidchapman.com.boroquiz;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import java.util.ArrayList;
 import java.util.Collections;
 
 import android.os.Handler;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
+
+import static davidchapman.com.boroquiz.R.drawable.correct_answer_button;
+import static davidchapman.com.boroquiz.R.drawable.incorrect_answer_button;
+import static davidchapman.com.boroquiz.R.drawable.standard_button;
 
 public class QuizQuestionsActivity extends AppCompatActivity {
 
@@ -28,6 +41,12 @@ public class QuizQuestionsActivity extends AppCompatActivity {
     private int pageSelectionCount = 0;
     private ArrayList<Integer> numbers;
     private Handler mHandler = new Handler();
+    private Tracker mTracker;
+    /**
+     * ATTENTION: This was auto-generated to implement the App Indexing API.
+     * See https://g.co/AppIndexing/AndroidStudio for more information.
+     */
+    private GoogleApiClient client;
 
 
     @Override
@@ -35,11 +54,15 @@ public class QuizQuestionsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_questions);
 
+        // Obtain the shared Tracker instance.
+        AnalyticsApplication application = (AnalyticsApplication) getApplication();
+        mTracker = application.getDefaultTracker();
+
         mTextView = (CustomTextView2) findViewById(R.id.questionTextView);
-        mAnswer1 = (Button) findViewById(R.id.answerButton1);
-        mAnswer2 = (Button) findViewById(R.id.answerButton2);
-        mAnswer3 = (Button) findViewById(R.id.answerButton3);
-        mAnswer4 = (Button) findViewById(R.id.answerButton4);
+        mAnswer1 = (ButtonTextFont) findViewById(R.id.answerButton1);
+        mAnswer2 = (ButtonTextFont) findViewById(R.id.answerButton2);
+        mAnswer3 = (ButtonTextFont) findViewById(R.id.answerButton3);
+        mAnswer4 = (ButtonTextFont) findViewById(R.id.answerButton4);
         mQuestionNumber = (CustomTextView) findViewById(R.id.questionNumberTextView);
 
         mQuestionNumber.setText("Question " + questionCounter);
@@ -50,6 +73,18 @@ public class QuizQuestionsActivity extends AppCompatActivity {
         loadPage(numbers.get(pageSelectionCount));
         pageSelectionCount++;
 
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Google Analytics
+        Log.i(TAG, "Setting screen name: ");
+        mTracker.setScreenName("QuizQuestions");
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     private ArrayList randomGenerator() {
@@ -64,14 +99,12 @@ public class QuizQuestionsActivity extends AppCompatActivity {
         return numbers;
     }
 
-    private void buttonResetter()
-    {
-        mAnswer1.setBackgroundColor(Color.WHITE);
-        mAnswer2.setBackgroundColor(Color.WHITE);
-        mAnswer3.setBackgroundColor(Color.WHITE);
-        mAnswer4.setBackgroundColor(Color.WHITE);
+    private void buttonResetter() {
+        mAnswer1.setBackgroundResource(standard_button);
+        mAnswer2.setBackgroundResource(standard_button);
+        mAnswer3.setBackgroundResource(standard_button);
+        mAnswer4.setBackgroundResource(standard_button);
 
-        //Reset all button text colours to red.
         mAnswer1.setTextColor(Color.RED);
         mAnswer2.setTextColor(Color.RED);
         mAnswer3.setTextColor(Color.RED);
@@ -85,8 +118,7 @@ public class QuizQuestionsActivity extends AppCompatActivity {
 
     }
 
-    private void disableButtons()
-    {
+    private void disableButtons() {
         mAnswer1.setEnabled(false);
         mAnswer2.setEnabled(false);
         mAnswer3.setEnabled(false);
@@ -134,11 +166,11 @@ public class QuizQuestionsActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if (mCurrentPage.getAnswer1().isCorrect()) {
                         correctAnswers = correctAnswers + 1;
-                        mAnswer1.setBackgroundColor(Color.GREEN);
+                        mAnswer1.setBackgroundResource(correct_answer_button);
+                        mAnswer1.setTextColor(Color.RED);
                         disableButtons();
-                    }
-                    else {
-                        mAnswer1.setBackgroundColor(Color.RED);
+                    } else {
+                        mAnswer1.setBackgroundResource(incorrect_answer_button);
                         mAnswer1.setTextColor(Color.WHITE);
                         disableButtons();
                     }
@@ -159,11 +191,11 @@ public class QuizQuestionsActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if (mCurrentPage.getAnswer2().isCorrect()) {
                         correctAnswers = correctAnswers + 1;
-                        mAnswer2.setBackgroundColor(Color.GREEN);
+                        mAnswer2.setBackgroundResource(correct_answer_button);
+                        mAnswer2.setTextColor(Color.RED);
                         disableButtons();
-                    }
-                    else {
-                        mAnswer2.setBackgroundColor(Color.RED);
+                    } else {
+                        mAnswer2.setBackgroundResource(incorrect_answer_button);
                         mAnswer2.setTextColor(Color.WHITE);
                         disableButtons();
                     }
@@ -185,11 +217,11 @@ public class QuizQuestionsActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if (mCurrentPage.getAnswer3().isCorrect()) {
                         correctAnswers = correctAnswers + 1;
-                        mAnswer3.setBackgroundColor(Color.GREEN);
+                        mAnswer3.setBackgroundResource(correct_answer_button);
+                        mAnswer3.setTextColor(Color.RED);
                         disableButtons();
-                    }
-                    else {
-                        mAnswer3.setBackgroundColor(Color.RED);
+                    } else {
+                        mAnswer3.setBackgroundResource(incorrect_answer_button);
                         mAnswer3.setTextColor(Color.WHITE);
                         disableButtons();
                     }
@@ -211,11 +243,11 @@ public class QuizQuestionsActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     if (mCurrentPage.getAnswer4().isCorrect()) {
                         correctAnswers = correctAnswers + 1;
-                        mAnswer4.setBackgroundColor(Color.GREEN);
+                        mAnswer4.setBackgroundResource(correct_answer_button);
+                        mAnswer4.setTextColor(Color.RED);
                         disableButtons();
-                    }
-                    else {
-                        mAnswer4.setBackgroundColor(Color.RED);
+                    } else {
+                        mAnswer4.setBackgroundResource(incorrect_answer_button);
                         mAnswer4.setTextColor(Color.WHITE);
                         disableButtons();
                     }
@@ -233,7 +265,56 @@ public class QuizQuestionsActivity extends AppCompatActivity {
 
         }
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        client.connect();
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "QuizQuestions Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://davidchapman.com.boroquiz/http/host/path")
+        );
+        AppIndex.AppIndexApi.start(client, viewAction);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        // ATTENTION: This was auto-generated to implement the App Indexing API.
+        // See https://g.co/AppIndexing/AndroidStudio for more information.
+        Action viewAction = Action.newAction(
+                Action.TYPE_VIEW, // TODO: choose an action type.
+                "QuizQuestions Page", // TODO: Define a title for the content shown.
+                // TODO: If you have web page content that matches this app activity's content,
+                // make sure this auto-generated web page URL is correct.
+                // Otherwise, set the URL to null.
+                Uri.parse("http://host/path"),
+                // TODO: Make sure this auto-generated app deep link URI is correct.
+                Uri.parse("android-app://davidchapman.com.boroquiz/http/host/path")
+        );
+        AppIndex.AppIndexApi.end(client, viewAction);
+        client.disconnect();
+    }
 }
+
+
+
+
+
+
+
+
+
 
 
 
